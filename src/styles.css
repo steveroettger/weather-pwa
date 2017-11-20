@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+.bg-faded {
+	color: #fff;
+	background: #4f7abb;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.open, .navbar-light .navbar-nav .open>.nav-link {
+	color: rgba(255,255,255,.9);
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(255,255,255,.5);
+}
