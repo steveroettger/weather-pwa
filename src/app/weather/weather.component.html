@@ -3,7 +3,7 @@
 	<h2 id="weather-header-details" class="card-headline text-uppercase">Weather</h2>
 	<div id="weather-details" class="card-details d-flex pt-3">
         <div class="description mr-auto">
-            <img [src]="weather.weatherImgUrl">
+            <img [src]="weather.weatherImgUrl" class="rounded mb-2" alt="{{weather.weather}}" />
             <h3 id="weatherShortDescription">{{weather.weather}}</h3>
             <p id="weatherDateTime" class="mb-0">{{weather.date}}</p>
             <p id="weatherLocation" class="mb-0">{{weather.location}}, {{weather.state}}</p>

@@ -32,3 +32,14 @@ h2.card-headline {
   letter-spacing: 1px;
   font-weight: 700;
 }
+
+img.page-hero {
+  width: 100%;
+  height: auto;
+}
+
+.card-details h3 {
+  font-size: 16px;
+  color: #202630;
+  font-weight: 700;
+}
