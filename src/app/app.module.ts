@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
 import { WeatherService } from './weather/weather.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { WeatherService } from './weather/weather.service';
     WeatherComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]
