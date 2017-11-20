@@ -1,0 +1,13 @@
+.page-wrapper {
+	max-width: 960px;
+}
+
+h1.main-title {
+	font-size: 2em;
+	text-align:center;
+}
+
+@media (max-width: 767px) {
+
+	h1.main-title { font-size: 1.5em; }
+}
