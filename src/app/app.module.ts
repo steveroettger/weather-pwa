@@ -7,6 +7,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { WeatherComponent } from './weather/weather.component';
 import { WeatherService } from './weather/weather.service';
+import { LoaderComponent } from './loader/loader.component';
 import { AppRoutingModule } from './app-routing.module';
 
 
@@ -15,7 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     WeatherComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
