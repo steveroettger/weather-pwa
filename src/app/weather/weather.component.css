@@ -1,0 +1,23 @@
+
+.card-details .description h3 {
+	margin-bottom: 2px;
+  font-size: 16px;
+  color: #202630;
+  font-weight: 700;
+}
+
+.card-details .reading {
+	color: #202630;
+}
+
+.card-details .reading h4 {
+  font-size: 44px;
+  font-weight: 400;
+}
+
+.card-details .reading h4 span {
+  position: relative;
+  top: 4px;
+  vertical-align: text-top;
+  font-size: 24px;
+}
