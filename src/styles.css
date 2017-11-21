@@ -1,13 +1,13 @@
 /* General */
 body {
-	font-family: 'Roboto', sans-serif;
-	background-color: #e3e6ef;
+  font-family: 'Roboto', sans-serif;
+  background-color: #e3e6ef;
 }
 
 p {
-	font-size: 14px;
-	line-height: 20px;
-	color: #666666;
+  font-size: 14px;
+  line-height: 20px;
+  color: #666666;
 }
 
 /* Navigation */
@@ -17,8 +17,8 @@ p {
 
 /* General Card Styles */
 .card {
-	max-width: 780px;
-	-webkit-border-radius: 0;
+  max-width: 780px;
+  -webkit-border-radius: 0;
   border-radius: 0;
   background-clip: padding-box;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
