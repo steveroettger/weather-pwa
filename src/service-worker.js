@@ -1,43 +1,68 @@
-const version = 'v2';
+const CACHE_NAME = 'weather-cache-v1';
 
-var cacheName = 'shell-content';
-var filesToCache = [
-	'/assets/images/*',
-	'/styles.css',
-	'/index.html',
-	'/'
+var urlsToCache = [
+  '/',
+  '/index.html',
+  '/assets/images/favicon.ico',
+  '/assets/images/nemours-reverse.png',
+  '/assets/images/nemours-reverse@2x.png',
+  '/assets/images/nemours-reverse@3x.png',
+  '/assets/images/ring-alt@3x.gif',
+  // '/styles.css'
+  'https://fonts.googleapis.com/css?family=Roboto:400,500,700,900',
+  '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+  'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css',
+  'https://fonts.googleapis.com/icon?family=Material+Icons',
+  '//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js',
+  'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'
 ];
 
-if ('serviceWorker' in navigator && 'PushManager' in window) {
-	console.log('Service Worker and Push is supported');
-
-	navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-	  console.log('New Service Worker registered: ' + version);
-	}).catch(function(err) {
-	  console.log('Service Worker registration failed: ', err);
-	});
+if ('serviceWorker' in navigator) {
+  /*
+    google best practice recommends registering after page load
+    https://developers.google.com/web/fundamentals/primers/service-workers/registration
+  */
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
 }
 
-// Cache App Shell Manually
 self.addEventListener('install', function(event) {
-  console.log('[ServiceWorker] Install' + version);
+  console.log('Service worker install in progress');
+  // Perform install steps
   event.waitUntil(
-    caches.open(cacheName).then(function(cache) {
-      console.log('[ServiceWorker] Caching app shell' + version);
-      return cache.addAll(filesToCache);
-    })
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log(`Opened cache ${CACHE_NAME}`);
+        return cache.addAll(urlsToCache).then(function() {
+          console.log('URLs cached, install complete');
+        }).catch(function(error) {
+          console.log('Failed to cache urls', error);
+        });
+      })
   );
 });
 
-// Service Worker Usage
-self.addEventListener('fetch', function(event){
-	// check to see if app is offline
-	if (!navigator.onLine) {
-		event.respondWith(new Response('<h1 style="text-align:center;"> Offline :( </h1>', { headers: { 'Content-Type': 'text/html' } }));
-	} else {
-		console.log(event.request.url);
-
-		// essentially a pass through of original request
-		event.respondWith(fetch(event.request));
-	}
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        console.log(`Checking cache for ${event.request.url}`);
+        // Cache hit - return response
+        if (response) {
+          console.log(`Cache hit for ${event.request.url}`);
+          return response;
+        }
+        console.log(`Cache miss for ${event.request.url}`);
+        return fetch(event.request);
+      }
+    )
+  );
 });

@@ -7,7 +7,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'weather',
+    redirectTo: 'about',
     pathMatch: 'full'
   },
   { path: 'weather', component: WeatherComponent },
