@@ -12,6 +12,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { OfflineComponent } from './offline/offline.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { PageNotFoundComponent } from './pages/404/404.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     ContactComponent,
     LoaderComponent,
     OfflineComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
