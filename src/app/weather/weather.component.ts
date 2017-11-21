@@ -18,7 +18,6 @@ export class WeatherComponent implements OnInit {
 
   ngOnInit() {
     if (navigator.onLine) {
-      this.loading = true;
       this.loadWeather();
       this.isOnline = true;
     } else {
@@ -27,6 +26,7 @@ export class WeatherComponent implements OnInit {
   }
 
   public loadWeather() {
+    this.loading = true;
     this.weatherService.getCurrentWeather().subscribe((weather) => {
       this.weather = weather;
       this.loading = false;
