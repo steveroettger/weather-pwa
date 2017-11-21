@@ -11,6 +11,7 @@ export class NotificationsComponent implements OnInit {
   public notificationsDenied: boolean;
   public notificationsAllowed: boolean;
   public notificationsDefault: boolean;
+  public notificationsSubscribed: boolean;
 
   constructor() { this.setNotificationFlags('default'); }
 
@@ -18,6 +19,7 @@ export class NotificationsComponent implements OnInit {
     if ('serviceWorker' in navigator && 'PushManager' in window) {
       this.notificationsSupported = true;
       this.setNotificationFlags((Notification as any).permission);
+      this.setSubscriptionFlags();
     } else {
       this.notificationsSupported = false;
     }
@@ -28,6 +30,41 @@ export class NotificationsComponent implements OnInit {
     Notification.requestPermission().then((status) => {
       this.setNotificationFlags(status);
     });
+  }
+
+  public subscribeToNotifications() {
+    const subscribeOptions = {
+      userVisibleOnly: true,
+      applicationServerKey: this.urlBase64ToUint8Array(
+        'BB28Y98Mn9felmviJn4pKZn3pdWVx1XzkmzBoEiZ2kRE8Tv-YJLk9fZWtlH5h66JqN-f86G2ThlmySXiFMy6eEU'
+      )
+    };
+
+    navigator.serviceWorker.getRegistration().then((registration) => {
+      registration.pushManager.subscribe(subscribeOptions).then((subscription) => {
+        console.log('Received subscription: ', JSON.stringify(subscription));
+        this.setSubscriptionFlags();
+      });
+    });
+  }
+
+  public unsubscribeFromNotifications() {
+    // TODO implement me
+  }
+
+  private urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+      .replace(/\-/g, '+')
+      .replace(/_/g, '/');
+
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
   }
 
   private setNotificationFlags(permission: string) {
@@ -44,6 +81,18 @@ export class NotificationsComponent implements OnInit {
       this.notificationsAllowed = false;
       this.notificationsDenied = true;
     }
+  }
+
+  private setSubscriptionFlags() {
+    navigator.serviceWorker.getRegistration().then((registration) => {
+      registration.pushManager.getSubscription().then((subscription) => {
+        if (subscription && subscription !== null) {
+          this.notificationsSubscribed = true;
+        } else {
+          this.notificationsSubscribed = false;
+        }
+      });
+    });
   }
 
   private testNotification() {
