@@ -17,15 +17,20 @@ export class WeatherComponent implements OnInit {
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit() {
-    this.loading = true;
-    this.weatherService.getCurrentWeather().subscribe((weather) => {
-      this.weather = weather;
-      this.loading = false;
-    }, (err) => {
-      console.log(`Failed to get weather: ${err}`);
-      this.loading = false;
-    });
-    this.isOnline = true
+    if (navigator.onLine) {
+      this.loading = true;
+      this.weatherService.getCurrentWeather().subscribe((weather) => {
+        this.weather = weather;
+        this.loading = false;
+      }, (err) => {
+        console.log(`Failed to get weather: ${err}`);
+        this.loading = false;
+      });
+      this.isOnline = true;
+    } else {
+      this.isOnline = false;
+    }
+
   }
 
   @HostListener('window:offline', ['$event'])
