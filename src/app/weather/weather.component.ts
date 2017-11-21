@@ -19,18 +19,21 @@ export class WeatherComponent implements OnInit {
   ngOnInit() {
     if (navigator.onLine) {
       this.loading = true;
-      this.weatherService.getCurrentWeather().subscribe((weather) => {
-        this.weather = weather;
-        this.loading = false;
-      }, (err) => {
-        console.log(`Failed to get weather: ${err}`);
-        this.loading = false;
-      });
+      this.loadWeather();
       this.isOnline = true;
     } else {
       this.isOnline = false;
     }
+  }
 
+  public loadWeather() {
+    this.weatherService.getCurrentWeather().subscribe((weather) => {
+      this.weather = weather;
+      this.loading = false;
+    }, (err) => {
+      console.log(`Failed to get weather: ${err}`);
+      this.loading = false;
+    });
   }
 
   @HostListener('window:offline', ['$event'])
@@ -41,5 +44,6 @@ export class WeatherComponent implements OnInit {
   @HostListener('window:online', ['$event'])
   online(event) {
     this.isOnline = true;
+    this.loadWeather();
   }
 }
