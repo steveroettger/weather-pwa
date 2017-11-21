@@ -1,5 +1,5 @@
 <!-- BEGIN WEATHER CARD -->
-<div class="weather-card card mt-4 mx-auto p-3 p-md-4 border-0" *ngIf="weather && !loading">
+<div class="weather-card card mt-4 mx-auto p-3 p-md-4 border-0" *ngIf="weather && !loading && isOnline">
 	<h2 id="weather-header-details" class="card-headline text-uppercase">Weather</h2>
 	<div id="weather-details" class="card-details d-flex pt-3">
         <div class="description mr-auto">
@@ -17,4 +17,8 @@
 
 <!-- BEGIN COMPONENT LOADER -->
 <loader message="Loading Weather Near You" *ngIf="loading"></loader>
+<!-- END COMPONENT LOADER -->
+
+<!-- BEGIN COMPONENT LOADER -->
+<offline message="Cannot load weather because you are offline!" *ngIf="!loading && !isOnline"></offline>
 <!-- END COMPONENT LOADER -->
