@@ -11,6 +11,7 @@ import { WeatherService } from './weather/weather.service';
 import { LoaderComponent } from './loader/loader.component';
 import { OfflineComponent } from './offline/offline.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     AboutComponent,
     ContactComponent,
     LoaderComponent,
-    OfflineComponent
+    OfflineComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,

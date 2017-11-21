@@ -4,6 +4,7 @@ import { WeatherComponent } from './weather/weather.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { OfflineComponent } from './offline/offline.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'weather', component: WeatherComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'offline', component: OfflineComponent }
+  { path: 'notifications', component: NotificationsComponent}
 ];
 
 @NgModule({

@@ -21,7 +21,7 @@ var urlsToCache = [
   'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js'
 ];
 
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && 'PushManager' in window) {
   /*
     google best practice recommends registering after page load
     https://developers.google.com/web/fundamentals/primers/service-workers/registration
@@ -35,6 +35,9 @@ if ('serviceWorker' in navigator) {
       console.log('ServiceWorker registration failed: ', err);
     });
   });
+}
+else {
+  console.log('Service Worker and/or Push Notifications are not supported');
 }
 
 self.addEventListener('install', function(event) {

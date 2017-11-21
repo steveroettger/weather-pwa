@@ -1,0 +1,12 @@
+<div class="notifications-card card mt-4 mx-auto py-3 py-md-4 border-0">
+	<h2 class="card-headline text-uppercase px-3 px-md-4 mb-3">Notifications</h2>
+  <div class="card-details pt-3 px-3 px-md-4" *ngIf="notificationsSupported">
+		<p class="mb-0" *ngIf="notificationsAllowed">Notifications Allowed</p>
+    <p class="mb-0" *ngIf="notificationsDenied">Notifications Denied</p>
+    <button type="button" (click)="requestDisplayNotificationPermission()" *ngIf="notificationsDefault">Allow Notifications</button>
+    <button type="button" (click)="testNotification()" *ngIf="notificationsAllowed">Test Notifications</button>
+  </div>
+  <div class="card-details pt-3 px-3 px-md-4" *ngIf="!notificationsSupported">
+		<p class="mb-0">Notifications are not supported by your browser!</p>
+  </div>
+</div><!-- /.contact-card.card -->
