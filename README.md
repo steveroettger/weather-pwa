@@ -46,3 +46,10 @@ Paul's Desktop Subscription:
 
 Steve's Desktop Subscription:
 {"endpoint":"https://fcm.googleapis.com/fcm/send/c_Ffu-gT6bc:APA91bEWA3h7zuv3FTBsAKw50c27E4fQJbSdyFzgCUf_s12YEpSdYuMNSm5pQG9uDzMMvEvUMnXTFploGHLAxYnk1H_DsYe8nwauJ2iXzFZMRA9OAKDCrqtvZjDdEiMoU1eQiA3TEkSn","expirationTime":null,"keys":{"p256dh":"BJjmN9iOy6fPKcseGtyHGzTmYllEAOO0Zm0l59Lj7wQYYsIU9TNxIvFhZRuRl0W7lJklCz5zM5g82yUfoBOuivs=","auth":"P8TzUIBqeLia0JmQ2gdcBw=="}}
+
+=======================================
+
+Send push notifications:
+
+$ node push-server/web-push paul steve
+
