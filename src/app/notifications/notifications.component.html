@@ -12,7 +12,7 @@
   <div class="card-details pt-3 px-3 px-md-4" *ngIf="notificationsSupported">
 		<p class="mb-0" *ngIf="notificationsSubscribed">You are subscribed to receive notifications</p>
     <p class="mb-0" *ngIf="!notificationsSubscribed">You are not subscribed to receive notifications</p>
-    <button type="button" (click)="subscribeToNotifications()" *ngIf="!notificationsSubscribed">Subscribe</button>
-    <button type="button" (click)="unsubscribeFromNotifications()" *ngIf="notificationsSubscribed">Unsubscribe</button>
+    <button type="button" class="btn btn-primary" (click)="subscribeToNotifications()" *ngIf="!notificationsSubscribed">Subscribe</button>
+    <button type="button" class="btn btn-primary" (click)="unsubscribeFromNotifications()" *ngIf="notificationsSubscribed">Unsubscribe</button>
   </div>
 </div><!-- /.contact-card.card -->
