@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Weather } from './weather.model';
 
-const WEATHER_URL = 'http://forecast.weather.gov/MapClick.php?lat=39.9526&lon=-75.1652&FcstType=json';
-const CURRENT_WEATHER_IMG_URL = 'http://forecast.weather.gov/newimages/large/';
+const WEATHER_URL = 'https://forecast.weather.gov/MapClick.php?lat=39.9526&lon=-75.1652&FcstType=json';
+const CURRENT_WEATHER_IMG_URL = 'https://forecast.weather.gov/newimages/large/';
 
 @Injectable()
 export class WeatherService {
