@@ -49,7 +49,16 @@ export class NotificationsComponent implements OnInit {
   }
 
   public unsubscribeFromNotifications() {
-    // TODO implement me
+    navigator.serviceWorker.getRegistration().then((registration) => {
+      registration.pushManager.getSubscription().then((subscription) => {
+        subscription.unsubscribe().then((success) => {
+          console.log('Unsubscribed from push notifications');
+          this.setSubscriptionFlags();
+        }).catch((err) => {
+          console.log('Failed to unsubscribe from push notifications: ', err);
+        });
+      });
+    });
   }
 
   private urlBase64ToUint8Array(base64String) {
