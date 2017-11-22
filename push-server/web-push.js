@@ -4,9 +4,12 @@ var paulsPushSubscription = {"endpoint":"https://fcm.googleapis.com/fcm/send/dmK
 
 var stevesPushSubscription = {"endpoint":"https://fcm.googleapis.com/fcm/send/c_Ffu-gT6bc:APA91bEWA3h7zuv3FTBsAKw50c27E4fQJbSdyFzgCUf_s12YEpSdYuMNSm5pQG9uDzMMvEvUMnXTFploGHLAxYnk1H_DsYe8nwauJ2iXzFZMRA9OAKDCrqtvZjDdEiMoU1eQiA3TEkSn","expirationTime":null,"keys":{"p256dh":"BJjmN9iOy6fPKcseGtyHGzTmYllEAOO0Zm0l59Lj7wQYYsIU9TNxIvFhZRuRl0W7lJklCz5zM5g82yUfoBOuivs=","auth":"P8TzUIBqeLia0JmQ2gdcBw=="}};
 
+var steveGithubProd = {"endpoint":"https://fcm.googleapis.com/fcm/send/dVQtY2AnB2A:APA91bENIAddIAy07TC8kZXZpP7pPjN1wf5jZDNpkyTPHl8g47eqILmAewVB-ZQVPPcBs3nZYtoy_lEulmR2oY9gBlDsJiJKujIc615ltzd27TLhzbUowfSFJ-x6binRd6-OnDf0fdWL","expirationTime":null,"keys":{"p256dh":"BOHHJ3P7intNFG5rJfx8XeVaOmp63txuxSU2yYiDTQkedeEVBnsQwA3EBX5PEjD9KAsfB-GW6YY1rh08wNxrXOc=","auth":"G5NE9YACKdc_HmR_iBeftg=="}}
+
 var subscriptionKeys = {
 	paul: paulsPushSubscription,
-	steve: stevesPushSubscription
+	steve: stevesPushSubscription,
+  steveProd: steveGithubProd
 };
 
 var vapidPublicKey = 'BB28Y98Mn9felmviJn4pKZn3pdWVx1XzkmzBoEiZ2kRE8Tv-YJLk9fZWtlH5h66JqN-f86G2ThlmySXiFMy6eEU';
