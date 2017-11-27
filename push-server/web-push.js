@@ -15,8 +15,6 @@ var subscriptionKeys = {
 var vapidPublicKey = 'BB28Y98Mn9felmviJn4pKZn3pdWVx1XzkmzBoEiZ2kRE8Tv-YJLk9fZWtlH5h66JqN-f86G2ThlmySXiFMy6eEU';
 var vapidPrivateKey = 'BtRXoeCppesRV_DUFZrc6zkNXX4q58Ptw3BHG5gUmqU';
 
-var payload = 'Happy Thanksgiving!';
-
 var options = {
   vapidDetails: {
     subject: 'mailto:paul.friedman@nemours.org',
@@ -26,8 +24,14 @@ var options = {
   TTL: 60
 };
 
+// argv[0] = 'node'
+// argv[1] = 'web-push.js'
+// argv[2] = 'notification message'
+// argv[3+] = 'paul', 'steve', etc.
+let payload = process.argv[2];
+
 process.argv.forEach(function (val, index, array) {
-  if (index > 1) {
+  if (index > 2) {
   	webPush.sendNotification(subscriptionKeys[val], payload, options).then(() => {
       console.log(`Sent push notification to ${val}`);
     }).catch((err) => {
