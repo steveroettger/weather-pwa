@@ -51,4 +51,9 @@ Steve's Desktop Subscription:
 
 Send push notifications:
 
-$ node push-server/web-push paul steve
+// argv[0] = 'node'
+// argv[1] = 'push-server/web-push.js'
+// argv[2] = 'notification message'
+// argv[3+] = 'paul', 'steve', etc.
+
+$ node push-server/web-push 'I am the message' paul steve
