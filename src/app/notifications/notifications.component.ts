@@ -42,7 +42,7 @@ export class NotificationsComponent implements OnInit {
 
     navigator.serviceWorker.getRegistration().then((registration) => {
       registration.pushManager.subscribe(subscribeOptions).then((subscription) => {
-        console.log('Received subscription: ', subscription);
+        console.log('Received subscription: ', JSON.stringify(subscription));
         this.setSubscriptionFlags();
       });
     });
